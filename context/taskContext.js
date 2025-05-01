@@ -5,8 +5,7 @@ import toast from "react-hot-toast";
 
 const TasksContext = createContext();
 
-const serverUrl =
-	"https://task-management-system-api-production.up.railway.app/api/v1";
+const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL + "/api/v1";
 
 export const TasksProvider = ({ children }) => {
   const userId = useUserContext().user._id;

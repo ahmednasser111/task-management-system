@@ -9,8 +9,7 @@ const UserContext = React.createContext();
 axios.defaults.withCredentials = true;
 
 export const UserContextProvider = ({ children }) => {
-  const serverUrl =
-		"https://task-management-system-api-production.up.railway.app";
+  const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
   const router = useRouter();
 
