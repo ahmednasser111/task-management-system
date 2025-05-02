@@ -9,13 +9,34 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { useTasks } from "@/context/taskContext";
+import { useUserContext } from "@/context/userContext";
+import { useRouter } from "next/navigation";
 
 function MiniSidebar() {
   const pathname = usePathname();
+  const { deleteAllTasks } = useTasks();
+  const { user } = useUserContext();
+  const router = useRouter();
+  const [showConfirm, setShowConfirm] = React.useState(false);
 
   const getStrokeColor = (link: string) => {
     return pathname === link ? "#3aafae" : "#71717a";
   };
+
+  const handleDeleteAll = () => {
+    if (!user || !user._id) {
+      router.push("/login");
+      return;
+    }
+    setShowConfirm(true);
+  };
+
+  const handleConfirm = async () => {
+    await deleteAllTasks();
+    setShowConfirm(false);
+  };
+  const handleCancel = () => setShowConfirm(false);
 
   const navItems = [
     {
@@ -60,9 +81,33 @@ function MiniSidebar() {
         </ul>
 
         <div className="mb-[1.5rem]">
-          <button className="w-12 h-12 flex justify-center items-center border-2 border-[#EB4E31]  p-2 rounded-full">
+          <button
+            className="w-12 h-12 flex justify-center items-center border-2 border-[#EB4E31]  p-2 rounded-full"
+            onClick={handleDeleteAll}
+          >
             <IconDeleteAll strokeColor="#EB4E31" />
           </button>
+          {showConfirm && (
+            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-30">
+              <div className="bg-white p-6 rounded shadow-lg flex flex-col items-center">
+                <p className="mb-4 text-center">Are you sure you want to delete all tasks?</p>
+                <div className="flex gap-4">
+                  <button
+                    className="bg-[#EB4E31] text-white px-4 py-2 rounded"
+                    onClick={handleConfirm}
+                  >
+                    Yes, Delete All
+                  </button>
+                  <button
+                    className="bg-gray-200 px-4 py-2 rounded"
+                    onClick={handleCancel}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

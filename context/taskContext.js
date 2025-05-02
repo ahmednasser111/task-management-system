@@ -117,6 +117,19 @@ export const TasksProvider = ({ children }) => {
     }
   };
 
+  const deleteAllTasks = async () => {
+    setLoading(true);
+    try {
+      await axios.delete(`${serverUrl}/tasks`);
+      setTasks([]);
+      toast.success("All tasks deleted successfully");
+    } catch (error) {
+      console.log("Error deleting all tasks", error);
+      toast.error("Failed to delete all tasks");
+    }
+    setLoading(false);
+  };
+
   const handleInput = (name) => (e) => {
     if (name === "setTask") {
       setTask(e);
@@ -148,6 +161,7 @@ export const TasksProvider = ({ children }) => {
         createTask,
         updateTask,
         deleteTask,
+        deleteAllTasks,
         priority,
         setPriority,
         handleInput,
