@@ -6,11 +6,7 @@ import { useUserContext } from "@/context/userContext";
 function Sidebar() {
   const { logoutUser } = useUserContext();
   return (
-    <aside
-      className="w-full sm:w-[20rem] mt-[5rem] h-[calc(100%-5rem)] fixed right-0 top-0 bg-[#f9f9f9] flex flex-col
-        overflow-y-auto scrollbar-thin scrollbar-thumb-[#e6e6e6] scrollbar-track-transparent
-        max-h-screen z-40 transition-all duration-300"
-    >
+    <div className="w-[20rem] mt-[5rem] h-[calc(100%-5rem)] fixed right-0 top-0 bg-[#f9f9f9] flex flex-col">
       <Profile />
       <div className="mt-4 mx-6">
         <RadialChart />
@@ -22,7 +18,7 @@ function Sidebar() {
       >
         Sign Out
       </button>
-    </aside>
+    </div>
   );
 }
 

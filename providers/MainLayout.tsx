@@ -11,7 +11,7 @@ interface MainLayoutProps {
 function MainLayout({ children }: MainLayoutProps) {
   const { isEditing, profileModal } = useTasks();
   return (
-    <div className="main-layout flex-1 bg-[#EDEDED] border-2 border-white rounded-[1.5rem] overflow-auto">
+    <div className="main-layout flex-1 bg-[#EDEDED] border-2 border-white rounded-none sm:rounded-[1.5rem] overflow-auto p-0 sm:p-4">
       {isEditing && <Modal />}
       {profileModal && <ProfileModal />}
       {children}

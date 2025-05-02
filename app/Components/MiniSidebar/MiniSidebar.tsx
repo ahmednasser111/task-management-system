@@ -40,7 +40,7 @@ function MiniSidebar() {
     },
   ];
   return (
-    <div className="fixed left-0 top-0 h-screen z-50 basis-[5rem] flex flex-col bg-[#f9f9f9] sm:static sm:h-auto">
+    <div className="fixed left-0 top-0 h-screen z-50 basis-[5rem] flex flex-col bg-[#f9f9f9] sm:static sm:h-auto shadow-md">
       <div className="flex items-center justify-center h-[5rem]">
         <Image src="/logo.png" width={28} height={28} alt="logo" />
       </div>
