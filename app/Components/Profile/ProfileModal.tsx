@@ -35,10 +35,10 @@ function ProfileModal() {
   };
 
   return (
-    <div className="fixed left-0 top-0 z-50 h-full w-full bg-[#333]/30 overflow-hidden">
+    <div className="fixed left-0 top-0 z-50 h-full w-full bg-[#333]/30 overflow-hidden flex items-center justify-center">
       <div
         ref={ref}
-        className="py-5 px-6 max-w-[520px] w-full flex flex-col gap-3 bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-md border-2 border-white"
+        className="py-5 px-2 sm:px-6 max-w-[95vw] sm:max-w-[520px] w-full flex flex-col gap-3 bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-md border-2 border-white"
       >
         <div className="absolute left-0 top-0 w-full h-[80px] bg-[#323232]/10 rounded-tr-md rounded-tl-md"></div>
 
@@ -156,8 +156,12 @@ function ProfileModal() {
 
           <div className="flex justify-end gap-4 border-t-2 border-t-[#323232]/10">
             <button
+              type="button"
               className="mt-3 py-2 px-4 bg-transparent text-black text-sm font-medium rounded-md border-2 border-[#323232]/10
                 hover:bg-[#EB4E31] hover:border-transparent hover:text-white transition-all duration-300"
+                onClick={() => {
+                  closeModal();
+                }}
             >
               Cancel
             </button>
@@ -165,6 +169,11 @@ function ProfileModal() {
               type="submit"
               className="mt-3 py-2 px-4 bg-[#3aafae] text-white text-sm font-medium rounded-md
                 hover:bg-[#2e8d8c]/90 transition-all duration-300"
+              onClick={() => {
+                setTimeout(() => {
+                  closeModal();
+                }, 1000)}
+              }
             >
               Save Changes
             </button>

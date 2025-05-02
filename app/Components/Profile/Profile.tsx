@@ -8,7 +8,7 @@ function Profile() {
   const { user } = useUserContext();
   const { tasks, activeTasks, completedTasks, openProfileModal } = useTasks();
   return (
-    <div className="m-6">
+    <div className="m-2 sm:m-6">
       <div
         className="px-2 py-4 flex items-center gap-3 bg-[#E6E6E6]/20 rounded-[0.8rem]
         hover:bg-[#E6E6E6]/50 transition duration-300 ease-in-out cursor-pointer border-2 border-transparent hover:border-2 hover:border-white"
@@ -18,13 +18,13 @@ function Profile() {
           <Image
             src={user?.photo}
             alt="avatar"
-            width={70}
-            height={70}
-            className="rounded-full"
+            width={50}
+            height={50}
+            className="rounded-full sm:w-[70px] sm:h-[70px]"
           />
         </div>
         <div>
-          <h1 className="flex flex-col text-xl">
+          <h1 className="flex flex-col text-lg sm:text-xl">
             <span className=" font-medium">Hello,</span>
             <span className="font-bold">{user?.name}</span>
           </h1>
