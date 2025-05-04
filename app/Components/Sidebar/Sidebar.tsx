@@ -4,7 +4,10 @@ import RadialChart from "../RadialChart/RadialChart";
 import { useUserContext } from "@/context/userContext";
 
 function Sidebar() {
-  const { logoutUser } = useUserContext();
+  const { user, logoutUser } = useUserContext();
+  if (!user || !user._id) {
+    return null;
+  }
   return (
     <div
       className="

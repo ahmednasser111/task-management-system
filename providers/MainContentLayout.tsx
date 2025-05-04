@@ -7,7 +7,8 @@ interface MainContentLayoutProps {
 }
 
 function MainContentLayout({ children }: MainContentLayoutProps) {
-  const userId = useUserContext().user._id;
+  const { user } = useUserContext();
+  const userId = user && user._id;
   return (
     <main
       className={`${

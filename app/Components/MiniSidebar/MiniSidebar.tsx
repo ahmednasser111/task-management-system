@@ -76,7 +76,7 @@ function MiniSidebar() {
 
         <div className="mb-[1.5rem] flex justify-center sm:justify-end">
           <button
-            className="w-12 h-12 flex justify-center items-center p-2 rounded-full sm:w-8 sm:h-8"
+            className="w-10 h-10 flex justify-center items-center p-2 rounded-full sm:w-8 sm:h-8"
             onClick={() => setShowConfirm(true)}
           >
             <IconDeleteAll strokeColor="#EB4E31" />
