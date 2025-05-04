@@ -24,7 +24,7 @@ Taskfyer is a modern, full-stack task management application built with Next.js 
 
 ### Prerequisites
 
-- Node.js (v14+ recommended)
+- Node.js (v16+ recommended)
 - npm or yarn
 - MongoDB instance (local or cloud)
 
@@ -32,8 +32,8 @@ Taskfyer is a modern, full-stack task management application built with Next.js 
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/ahmednasser111/Taskfyer.git
-   cd Taskfyer/client
+   git clone https://github.com/ahmednasser111/task-management-system.git
+   cd task-management-system
    ```
 
 2. **Install dependencies:**
