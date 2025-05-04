@@ -17,7 +17,7 @@ function Header() {
   const userId = user._id;
 
   return (
-		<header className='px-2 sm:px-6 my-4 w-full flex flex-col sm:flex-row items-center justify-between bg-[#f9f9f9] gap-4 sm:gap-0'>
+		<header className='pl-14 px-2 sm:px-6 my-4 w-full flex flex-col sm:flex-row items-center justify-between bg-[#f9f9f9] gap-4 sm:gap-0'>
 			<div className="w-full sm:w-auto">
 				<h1 className='text-lg font-medium'>
 					<span

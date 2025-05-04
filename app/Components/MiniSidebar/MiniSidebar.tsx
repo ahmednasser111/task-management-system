@@ -4,14 +4,16 @@ import IconDeleteAll from "@/public/icons/IconDeleteAll";
 import IconFileCheck from "@/public/icons/IconFileCheck";
 import IconGrid from "@/public/icons/IconGrid";
 import IconStopwatch from "@/public/icons/IconStopwatch";
-import { link } from "fs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+import { useTasks } from "@/context/taskContext";
 
 function MiniSidebar() {
   const pathname = usePathname();
+  const { deleteAllTasks } = useTasks();
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const getStrokeColor = (link: string) => {
     return pathname === link ? "#3aafae" : "#71717a";
@@ -39,10 +41,23 @@ function MiniSidebar() {
       link: "/overdue",
     },
   ];
+
+  const handleDeleteAll = async () => {
+    await deleteAllTasks();
+    setShowConfirm(false);
+  };
+
   return (
     <div className="fixed left-0 top-0 h-screen z-50 basis-[5rem] flex flex-col bg-[#f9f9f9] sm:static sm:h-auto shadow-md">
-      <div className="flex items-center justify-center h-[5rem]">
-        <Image src="/logo.png" width={28} height={28} alt="logo" />
+      <div className="flex items-center justify-center h-[5rem] sm:h-[3rem]">
+        <Image
+          src="/logo.png"
+          alt="logo"
+          width={40}
+          height={40}
+          className="w-10 h-10 sm:w-8 sm:h-8 object-contain"
+          priority
+        />
       </div>
 
       <div className="mt-8 flex-1 flex flex-col items-center justify-between">
@@ -59,12 +74,40 @@ function MiniSidebar() {
           ))}
         </ul>
 
-        <div className="mb-[1.5rem]">
-          <button className="w-12 h-12 flex justify-center items-center border-2 border-[#EB4E31]  p-2 rounded-full">
+        <div className="mb-[1.5rem] flex justify-center sm:justify-end">
+          <button
+            className="w-12 h-12 flex justify-center items-center p-2 rounded-full sm:w-8 sm:h-8"
+            onClick={() => setShowConfirm(true)}
+          >
             <IconDeleteAll strokeColor="#EB4E31" />
           </button>
         </div>
       </div>
+
+      {/* Confirmation Modal */}
+      {showConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white rounded-lg shadow-lg p-6 min-w-[300px] flex flex-col items-center">
+            <p className="mb-4 text-lg font-semibold text-gray-800 text-center">
+              Are you sure you want to delete all tasks?
+            </p>
+            <div className="flex gap-4">
+              <button
+                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                onClick={() => setShowConfirm(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                onClick={handleDeleteAll}
+              >
+                Delete All
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
