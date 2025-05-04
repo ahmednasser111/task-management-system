@@ -14,22 +14,24 @@ function Profile() {
         hover:bg-[#E6E6E6]/50 transition duration-300 ease-in-out cursor-pointer border-2 border-transparent hover:border-2 hover:border-white"
         onClick={openProfileModal}
       >
-        <div>
+        <div className="flex-shrink-0">
           <Image
             src={user?.photo}
             alt="avatar"
             width={50}
             height={50}
-            className="rounded-full sm:w-[70px] sm:h-[70px]"
+            className="rounded-full w-[50px] h-[50px] sm:w-[70px] sm:h-[70px] object-cover"
+            sizes="(max-width: 640px) 50px, 70px"
+            priority
           />
         </div>
-        <div>
-          <h1 className="flex flex-col text-lg sm:text-xl">
-            <span className=" font-medium">Hello,</span>
-            <span className="font-bold">{user?.name}</span>
+        <div className="flex-1 min-w-0">
+          <h1 className="flex flex-col text-base sm:text-lg md:text-xl">
+            <span className="font-medium">Hello,</span>
+            <span className="font-bold truncate">{user?.name}</span>
           </h1>
         </div>
-      </div>
+      </div>  
 
       <div className="mt-6 flex flex-col gap-8">
         <div className="grid grid-cols-2 gap-4">

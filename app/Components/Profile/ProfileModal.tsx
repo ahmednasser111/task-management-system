@@ -35,10 +35,11 @@ function ProfileModal() {
   };
 
   return (
-    <div className="fixed left-0 top-0 z-50 h-full w-full bg-[#333]/30 overflow-hidden flex items-center justify-center">
+    <div className="fixed left-0 top-0 z-50 h-[100dvh] w-full bg-[#333]/30 overflow-hidden flex items-center justify-center">
       <div
         ref={ref}
-        className="py-5 px-2 sm:px-6 max-w-[95vw] sm:max-w-[520px] w-full flex flex-col gap-3 bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-md border-2 border-white"
+        className="py-5 px-2 sm:px-6 max-w-[98vw] sm:max-w-[520px] w-full flex flex-col gap-3 bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-md border-2 border-white
+        xs:px-4 xs:max-w-[360px] md:max-w-[520px]"
       >
         <div className="absolute left-0 top-0 w-full h-[80px] bg-[#323232]/10 rounded-tr-md rounded-tl-md"></div>
 
@@ -83,7 +84,7 @@ function ProfileModal() {
             });
           }}
         >
-          <div className="pt-2 grid grid-cols-[150px_1fr]">
+          <div className="pt-2 grid grid-cols-1 sm:grid-cols-[150px_1fr] gap-y-2 sm:gap-y-0 items-center">
             <label htmlFor="name" className="text-sm font-medium">
               Full Name
             </label>
@@ -93,11 +94,11 @@ function ProfileModal() {
               name="name"
               defaultValue={name}
               onChange={(e) => handlerUserInput("name")(e)}
-              className="py-[0.4rem] px-3 font-medium rounded-lg border-2 border-[#323232]/10"
+              className="py-[0.4rem] px-3 font-medium rounded-lg border-2 border-[#323232]/10 w-full"
             />
           </div>
 
-          <div className="pt-4 grid grid-cols-[150px_1fr] border-t-2 border-t-[#323232]/10">
+          <div className="pt-4 grid grid-cols-1 sm:grid-cols-[150px_1fr] border-t-2 border-t-[#323232]/10 gap-y-2 sm:gap-y-0 items-center">
             <label htmlFor="email" className="text-sm font-medium">
               Email Address
             </label>
@@ -116,7 +117,7 @@ function ProfileModal() {
             </div>
           </div>
 
-          <div className="pt-4 grid grid-cols-2 gap-4 border-t-2 border-t-[#323232]/10">
+          <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t-2 border-t-[#323232]/10">
             <div className="flex flex-col gap-1">
               <label htmlFor="oldPassWord" className="text-sm font-medium">
                 Old Password
@@ -126,7 +127,7 @@ function ProfileModal() {
                 id="oldPassword"
                 value={oldPassword}
                 onChange={handlePassword("old")}
-                className="py-[0.4rem] px-3 font-medium rounded-lg border-2 border-[#323232]/10"
+                className="py-[0.4rem] px-3 font-medium rounded-lg border-2 border-[#323232]/10 w-full"
               />
             </div>
 
@@ -139,7 +140,7 @@ function ProfileModal() {
                 id="newPassword"
                 value={newPassword}
                 onChange={handlePassword("new")}
-                className="py-[0.4rem] px-3 font-medium rounded-lg border-2 border-[#323232]/10"
+                className="py-[0.4rem] px-3 font-medium rounded-lg border-2 border-[#323232]/10 w-full"
               />
             </div>
           </div>
