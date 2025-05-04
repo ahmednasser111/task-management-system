@@ -4,13 +4,13 @@ import RadialChart from "../RadialChart/RadialChart";
 import { useUserContext } from "@/context/userContext";
 
 function Sidebar() {
-  const { user, logoutUser } = useUserContext();
-  if (!user || !user._id) {
-    return null;
-  }
-  return (
-    <div
-      className="
+	const { user, logoutUser } = useUserContext();
+	if (!user || !user._id) {
+		return null;
+	}
+	return (
+		<div
+			className='
         hidden
         md:flex
         w-full
@@ -23,25 +23,24 @@ function Sidebar() {
         right-0
         top-0
         bg-[#f9f9f9]
+        dark:bg-gray-800
         flex-col
         overflow-y-auto
         max-h-[calc(100vh-5rem)]
         z-30
-      "
-    >
-      <Profile />
-      <div className="my-2 mx-6">
-        <RadialChart />
-      </div>
+      '>
+			<Profile />
+			<div className='my-2 mx-6'>
+				<RadialChart />
+			</div>
 
-      <button
-        className="mt-auto mb-6 mx-6 py-4 px-8 bg-[#EB4E31] text-white rounded-[50px] hover:bg-[#3aafae] transition duration-200 ease-in-out"
-        onClick={logoutUser}
-      >
-        Sign Out
-      </button>
-    </div>
-  );
+			<button
+				className='mt-auto mb-6 mx-6 py-4 px-8 bg-[#EB4E31] text-white rounded-[50px] hover:bg-[#3aafae] transition duration-200 ease-in-out'
+				onClick={logoutUser}>
+				Sign Out
+			</button>
+		</div>
+	);
 }
 
 export default Sidebar;

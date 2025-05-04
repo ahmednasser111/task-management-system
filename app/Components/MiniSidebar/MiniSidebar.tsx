@@ -1,23 +1,30 @@
-"use client";
-import IconCheck from "@/public/icons/IconCheck";
-import IconDeleteAll from "@/public/icons/IconDeleteAll";
-import IconFileCheck from "@/public/icons/IconFileCheck";
-import IconGrid from "@/public/icons/IconGrid";
-import IconStopwatch from "@/public/icons/IconStopwatch";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { useState } from "react";
-import { useTasks } from "@/context/taskContext";
+"use client"
+import IconCheck from "@/public/icons/IconCheck"
+import IconDeleteAll from "@/public/icons/IconDeleteAll"
+import IconFileCheck from "@/public/icons/IconFileCheck"
+import IconGrid from "@/public/icons/IconGrid"
+import IconStopwatch from "@/public/icons/IconStopwatch"
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useState } from "react"
+import { useTasks } from "@/context/taskContext"
+import { useUserContext } from "@/context/userContext"
 
 function MiniSidebar() {
-  const pathname = usePathname();
-  const { deleteAllTasks } = useTasks();
-  const [showConfirm, setShowConfirm] = useState(false);
+  const { user } = useUserContext()
+  const { deleteAllTasks } = useTasks()
+  const pathname = usePathname()
+  const [showConfirm, setShowConfirm] = useState(false)
+
+  // If user is not logged in, don't render the sidebar
+  if (!user || !user._id) {
+    return null
+  }
 
   const getStrokeColor = (link: string) => {
-    return pathname === link ? "#3aafae" : "#71717a";
-  };
+    return pathname === link ? "#3aafae" : "#71717a"
+  }
 
   const navItems = [
     {
@@ -40,15 +47,15 @@ function MiniSidebar() {
       title: "Overdue",
       link: "/overdue",
     },
-  ];
+  ]
 
   const handleDeleteAll = async () => {
-    await deleteAllTasks();
-    setShowConfirm(false);
-  };
+    await deleteAllTasks()
+    setShowConfirm(false)
+  }
 
   return (
-    <div className="fixed left-0 top-0 h-screen z-50 basis-[5rem] flex flex-col bg-[#f9f9f9] sm:static sm:h-auto shadow-md">
+    <div className="fixed left-0 top-0 h-screen z-50 basis-[5rem] flex flex-col bg-[#f9f9f9] dark:bg-gray-800 sm:static sm:h-auto shadow-md">
       <div className="flex items-center justify-center h-[5rem] sm:h-[3rem]">
         <Image
           src="/logo.png"
@@ -87,21 +94,18 @@ function MiniSidebar() {
       {/* Confirmation Modal */}
       {showConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-          <div className="bg-white rounded-lg shadow-lg p-6 min-w-[300px] flex flex-col items-center">
-            <p className="mb-4 text-lg font-semibold text-gray-800 text-center">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 min-w-[300px] flex flex-col items-center">
+            <p className="mb-4 text-lg font-semibold text-gray-800 dark:text-white text-center">
               Are you sure you want to delete all tasks?
             </p>
             <div className="flex gap-4">
               <button
-                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                className="px-4 py-2 bg-gray-200 dark:bg-gray-700 dark:text-white rounded hover:bg-gray-300 dark:hover:bg-gray-600"
                 onClick={() => setShowConfirm(false)}
               >
                 Cancel
               </button>
-              <button
-                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                onClick={handleDeleteAll}
-              >
+              <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onClick={handleDeleteAll}>
                 Delete All
               </button>
             </div>
@@ -109,7 +113,7 @@ function MiniSidebar() {
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default MiniSidebar;
+export default MiniSidebar
