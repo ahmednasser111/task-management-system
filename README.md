@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Taskfyer
+
+Taskfyer is a modern, full-stack task management application built with Next.js (React), Node.js, and MongoDB. It allows users to register, log in, and manage their tasks with features like priorities, due dates, and completion tracking. The app supports dark mode, responsive layouts, and admin user management.
+
+## Features
+
+- User authentication (register, login, logout)
+- Add, edit, delete, and view tasks
+- Task priorities and due dates
+- Mark tasks as completed or pending
+- Delete all tasks at once
+- Responsive design (mobile & desktop)
+- Dark mode support
+- Admin panel for user management
+
+## Tech Stack
+
+- **Frontend:** Next.js, React, Tailwind CSS
+- **Backend:** Node.js, Express.js, MongoDB
+- **State Management:** React Context API
+- **Notifications:** react-hot-toast
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (v14+ recommended)
+- npm or yarn
+- MongoDB instance (local or cloud)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ahmednasser111/Taskfyer.git
+   cd Taskfyer/client
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-## Learn More
+3. **Configure environment variables:**
 
-To learn more about Next.js, take a look at the following resources:
+   Create a `.env` file in the `client` directory:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```
+   NEXT_PUBLIC_SERVER_URL=http://localhost:8000
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   Adjust the URL if your backend runs elsewhere.
 
-## Deploy on Vercel
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   The app will be available at [http://localhost:3000](http://localhost:3000).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Backend
+
+Make sure to also set up and run the backend server. See the `/server` directory for backend setup instructions.
+
+## Usage
+
+- Register a new account or log in.
+- Add, edit, or delete your tasks.
+- Use the sidebar to filter tasks (All, Completed, Pending, Overdue).
+- Switch between light and dark mode.
+- Admin users can manage all users.
+
+## Folder Structure
+
+- `/app` - Next.js app directory (pages, components)
+- `/context` - React Context providers for user and tasks
+- `/public` - Static assets (icons, images)
+- `/providers` - Layout providers
+
+## Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+## Author
+
+- [Ahmed Nasser](https://github.com/ahmednasser111)
