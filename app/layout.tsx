@@ -31,7 +31,6 @@ export default function RootLayout({
 			lang='en'
 			className='dark:bg-gray-800'>
 			<head>
-				<GTMInitialiser />
 				<link
 					rel='stylesheet'
 					href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css'
