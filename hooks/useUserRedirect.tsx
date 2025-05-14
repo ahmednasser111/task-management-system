@@ -6,13 +6,17 @@ import { useEffect } from "react";
 const useRedirect = (redirect: string) => {
   const { user, loading } = useUserContext();
   const router = useRouter();
-
+  
   useEffect(() => {
     if (!user || !user.email) {
       router.push(redirect);
     }
-
-    // watch for changes to user, redirect, router
+    else if (user && user.email && redirect === "/login") {
+      router.push("/");
+    }
+    else if (loading) {
+      return;
+    }
   }, [user, redirect, router]);
 };
 

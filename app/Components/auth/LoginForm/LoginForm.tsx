@@ -1,16 +1,47 @@
 "use client";
 import { useUserContext } from "@/context/userContext";
 import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+	email: yup.string().email("Enter a valid email.").required("Email is required."),
+	password: yup.string().min(6, "Password must be at least 6 characters.").required("Password is required."),
+});
+
+type FormData = {
+	email: string;
+	password: string;
+};
 
 function LoginForm() {
-	const { loginUser, userState, handlerUserInput } = useUserContext();
-	const { email, password } = userState;
+	const { loginUser } = useUserContext();
 	const [showPassword, setShowPassword] = React.useState(false);
 
-	const togglePassword = () => setShowPassword(!showPassword);
+	const {
+		register,
+		handleSubmit,
+		formState: { errors, isValid },
+	} = useForm<FormData>({
+		resolver: yupResolver(schema),
+		mode: "onChange",
+	});
+
+	const onSubmit = (data: FormData) => {
+		loginUser({
+			email: data.email,
+			password: data.password
+		});
+	};
+
+	const togglePassword = () => setShowPassword((prev) => !prev);
 
 	return (
-		<form className='relative m-[2rem] px-10 py-14 rounded-lg bg-white dark:bg-gray-800 w-full max-w-[520px] dark:text-gray-100'>
+		<form
+			className='relative m-[2rem] px-10 py-14 rounded-lg bg-white dark:bg-gray-800 w-full max-w-[520px] dark:text-gray-100'
+			onSubmit={handleSubmit(onSubmit)}
+		>
 			<div className='relative z-10'>
 				<h1 className='mb-2 text-center text-[1.35rem] font-medium dark:text-white'>
 					Login to Your Account
@@ -33,12 +64,11 @@ function LoginForm() {
 					<input
 						type='text'
 						id='email'
-						value={email}
-						onChange={(e) => handlerUserInput("email")(e)}
-						name='email'
+						{...register("email")}
 						className='px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800 dark:text-white dark:bg-gray-700 dark:border-gray-600'
 						placeholder='johndoe@gmail.com'
 					/>
+					{errors.email && <span className="text-red-500 text-xs mt-1">{errors.email.message}</span>}
 				</div>
 				<div className='relative mt-[1rem] flex flex-col'>
 					<label
@@ -49,25 +79,21 @@ function LoginForm() {
 					<input
 						type={showPassword ? "text" : "password"}
 						id='password'
-						value={password}
-						onChange={(e) => handlerUserInput("password")(e)}
-						name='password'
+						{...register("password")}
 						className='px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800 dark:text-white dark:bg-gray-700 dark:border-gray-600'
 						placeholder='***************'
 					/>
 					<button
 						type='button'
-						className='absolute p-1 right-4 top-[43%] text-[22px] text-[#999] dark:text-gray-400 opacity-45'>
+						className='absolute p-1 right-4 top-[43%] text-[22px] text-[#999] dark:text-gray-400 opacity-45'
+						onClick={togglePassword}>
 						{showPassword ? (
-							<i
-								className='fas fa-eye-slash'
-								onClick={togglePassword}></i>
+							<i className='fas fa-eye-slash'></i>
 						) : (
-							<i
-								className='fas fa-eye'
-								onClick={togglePassword}></i>
+							<i className='fas fa-eye'></i>
 						)}
 					</button>
+					{errors.password && <span className="text-red-500 text-xs mt-1">{errors.password.message}</span>}
 				</div>
 				<div className='mt-4 flex justify-end'>
 					<a
@@ -79,8 +105,7 @@ function LoginForm() {
 				<div className='flex'>
 					<button
 						type='submit'
-						disabled={!email || !password}
-						onClick={loginUser}
+						disabled={!isValid}
 						className='mt-[1.5rem] flex-1 px-4 py-3 font-bold bg-[#2ECC71] text-white rounded-md hover:bg-[#1abc9c] transition-colors'>
 						Login Now
 					</button>

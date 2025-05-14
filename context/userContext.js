@@ -23,19 +23,20 @@ export const UserContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
 
   // register user
-  const registerUser = async (e) => {
-    e.preventDefault();
+  const registerUser = async (e, formData) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const data = formData || userState;
     if (
-      !userState.email.includes("@") ||
-      !userState.password ||
-      userState.password.length < 6
+      !data.email.includes("@") ||
+      !data.password ||
+      data.password.length < 6
     ) {
       toast.error("Please enter a valid email and password (min 6 characters)");
       return;
     }
 
     try {
-      const res = await axios.post(`${serverUrl}/api/v1/register`, userState);
+      const res = await axios.post(`${serverUrl}/api/v1/register`, data);
       console.log("User registered successfully", res.data);
       toast.success("User registered successfully");
 
@@ -55,14 +56,13 @@ export const UserContextProvider = ({ children }) => {
   };
 
   // login the user
-  const loginUser = async (e) => {
-    e.preventDefault();
+  const loginUser = async ({ email, password }) => {
     try {
       const res = await axios.post(
         `${serverUrl}/api/v1/login`,
         {
-          email: userState.email,
-          password: userState.password,
+          email,
+          password,
         },
         {
           withCredentials: true, // send cookies to the server
