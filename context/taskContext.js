@@ -148,7 +148,7 @@ export const TasksProvider = ({ children }) => {
     getTasks();
   }, [userId]);
 
-  console.log("Active tasks", activeTasks);
+  // console.log("Active tasks", activeTasks);
 
   return (
     <TasksContext.Provider
