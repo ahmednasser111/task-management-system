@@ -1,5 +1,5 @@
 import { useTasks } from "@/context/taskContext";
-import { edit, star, trash } from "@/utils/Icons";
+import { edit, trash } from "@/utils/Icons";
 import type { Task } from "@/utils/types";
 import { formatTime } from "@/utils/utilities";
 import React, { useState } from "react";
@@ -73,19 +73,33 @@ function TaskItem({ task }: TaskItemProps) {
 					</p>
 					<div>
 						<div className='flex items-center gap-3 text-gray-400 dark:text-gray-500 text-[1.2rem]'>
-							<button
-								className={`transition-colors ${
+							<motion.button
+								whileTap={{ scale: 0.85 }}
+								className={`transition-colors rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
 									task.completed
-										? "text-yellow-400"
-										: "text-gray-400 dark:text-gray-500"
+										? "bg-green-100 text-green-600 dark:bg-green-900"
+										: "bg-gray-100 dark:bg-gray-700"
 								}`}
+								style={{ minWidth: 36, minHeight: 36 }}
 								title={
 									task.completed ? "Mark as Incomplete" : "Mark as Completed"
 								}
 								onClick={handleToggleComplete}
-								disabled={isCompleting}>
-								{star}
-							</button>
+								disabled={isCompleting}
+							>
+								{task.completed ? (
+									// Checkmark icon
+									<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+										<circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="currentColor" className="text-green-400" />
+										<path stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M8 12l2.5 2.5L16 9" />
+									</svg>
+								) : (
+									// Empty circle icon
+									<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+										<circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+									</svg>
+								)}
+							</motion.button>
 							<button
 								className='text-[#00A1F1]'
 								onClick={() => {
