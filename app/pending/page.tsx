@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import { container, item } from "@/utils/animations";
 
 export default function Home() {
-	useRedirect("/login");
+	useRedirect(); // protected page, no argument needed
 
 	const { tasks, openModalForAdd, priority, setPriority } = useTasks();
 

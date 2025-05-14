@@ -10,7 +10,7 @@ import Filters from "./Components/Filters/Filters";
 import TaskItem from "./Components/TaskItem/TaskItem";
 
 export default function Home() {
-	useRedirect("/login");
+	useRedirect(); // protected page, no argument needed
 
 	const { tasks, openModalForAdd, priority, setPriority } = useTasks();
 
