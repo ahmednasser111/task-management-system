@@ -1,32 +1,85 @@
-# Taskfyer Documentation
+<p align="center">
+  <img src="./public/chrome-capture-2025-5-14.gif" alt="Taskfyer Demo Video" width="700"/>
+</p>
+
+<h1 align="center">Taskfyer Documentation</h1>
 
 ---
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Motivation](#motivation)
-3. [Features](#features)
-4. [Architecture Overview](#architecture-overview)
-5. [Tech Stack](#tech-stack)
-6. [User Roles & Permissions](#user-roles--permissions)
-7. [Security Considerations](#security-considerations)
-8. [API Overview](#api-overview)
-9. [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Setup](#setup)
-    - [Backend Setup](#backend-setup)
-10. [Usage Guide](#usage-guide)
-    - [Task Management](#task-management)
-    - [Filtering & Sorting](#filtering--sorting)
-    - [Dark Mode](#dark-mode)
-    - [Admin Panel](#admin-panel)
-11. [Folder Structure](#folder-structure)
-12. [Deployment](#deployment)
-13. [Troubleshooting](#troubleshooting)
-14. [FAQ](#faq)
-15. [Contributing](#contributing)
-16. [Author](#author)
+<table align="center" style="width:100%; border-collapse:collapse;">
+  <tr>
+    <th align="left">Section</th>
+    <th align="left">Description</th>
+  </tr>
+  <tr>
+    <td><a href="#introduction">Introduction</a></td>
+    <td>Overview of Taskfyer and its purpose</td>
+  </tr>
+  <tr>
+    <td><a href="#motivation">Motivation</a></td>
+    <td>Why Taskfyer was created</td>
+  </tr>
+  <tr>
+    <td><a href="#features">Features</a></td>
+    <td>Key functionalities of the app</td>
+  </tr>
+  <tr>
+    <td><a href="#architecture-overview">Architecture Overview</a></td>
+    <td>High-level system design</td>
+  </tr>
+  <tr>
+    <td><a href="#tech-stack">Tech Stack</a></td>
+    <td>Technologies used</td>
+  </tr>
+  <tr>
+    <td><a href="#user-roles--permissions">User Roles & Permissions</a></td>
+    <td>Access levels for users and admins</td>
+  </tr>
+  <tr>
+    <td><a href="#security-considerations">Security Considerations</a></td>
+    <td>Security features and best practices</td>
+  </tr>
+  <tr>
+    <td><a href="#api-overview">API Overview</a></td>
+    <td>RESTful endpoints and usage</td>
+  </tr>
+  <tr>
+    <td><a href="#getting-started">Getting Started</a></td>
+    <td>Setup instructions and prerequisites</td>
+  </tr>
+  <tr>
+    <td><a href="#usage-guide">Usage Guide</a></td>
+    <td>How to use the main features</td>
+  </tr>
+  <tr>
+    <td><a href="#folder-structure">Folder Structure</a></td>
+    <td>Project directory layout</td>
+  </tr>
+  <tr>
+    <td><a href="#deployment">Deployment</a></td>
+    <td>How to deploy Taskfyer</td>
+  </tr>
+  <tr>
+    <td><a href="#troubleshooting">Troubleshooting</a></td>
+    <td>Common issues and solutions</td>
+  </tr>
+  <tr>
+    <td><a href="#faq">FAQ</a></td>
+    <td>Frequently asked questions</td>
+  </tr>
+  <tr>
+    <td><a href="#contributing">Contributing</a></td>
+    <td>How to contribute to the project</td>
+  </tr>
+  <tr>
+    <td><a href="#presentation">Presentation</a></td>
+    <td>Links to presentation and documentation</td>
+  </tr>
+  <tr>
+    <td><a href="#author">Author</a></td>
+    <td>Project creator information</td>
+  </tr>
+</table>
 
 ---
 
@@ -257,6 +310,15 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 2. Create a new branch for your feature or bugfix.
 3. Commit your changes with clear messages.
 4. Push to your fork and submit a pull request.
+
+---
+
+## Presentation
+
+You can view the project presentation here: [Taskfyer Prezi Presentation](https://prezi.com/view/j4Ky9Baj3Z9uaj9SKgDo/)
+
+**Full Documentation:**  
+For a detailed guide, refer to the [Taskfyer Documentation PDF](../docs/Taskfyer_Documentation.pdf)
 
 ---
 
