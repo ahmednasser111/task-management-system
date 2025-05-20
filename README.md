@@ -2,6 +2,7 @@
   <img src="./public/chrome-capture-2025-5-14.gif" alt="Taskfyer Demo Video" width="700"/>
 </p>
 
+
 <h1 align="center">Taskfyer Documentation</h1>
 
 ---
@@ -321,6 +322,10 @@ You can view the project presentation here: [Taskfyer Prezi Presentation](https:
 For a detailed guide, refer to the [Taskfyer Documentation PDF](../docs/Taskfyer_Documentation.pdf)
 
 ---
+
+<p align="center">
+  <video src="./public/taskfyer-project.mp4" alt="Taskfyer Demo Video" width="700" controls loop autoplay></video>
+</p>
 
 ## Author
 
